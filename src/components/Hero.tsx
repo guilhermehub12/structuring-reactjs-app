@@ -7,7 +7,7 @@ type Props = types.RCProps<{
 export const Hero = ({ library }: Props) => {
     return (
         <section className="hero">
-            <video className="hero-video" autoPlay loop
+            <video className="hero-video" autoPlay={true} loop={true}
             >
                 <source src="../assets/video.mp4" type="video/mp4" />
                 Your browser does not support the video element. Kindly update it to latest version or try another one.
@@ -18,7 +18,8 @@ export const Hero = ({ library }: Props) => {
                     <h2 className="hero-title">
                         Organizando/Configurando Projetos {library}
                     </h2>
-                    <h4 className="hero-label">Guilherme Delmiro (@guilhermehub12)</h4>
+                    <h4 className="hero-label">Guilherme Delmiro <a href="https://github.com/guilhermehub12/">(@guilhermehub12)</a></h4>
+                    <h4 className="hero-label">Repositório: <a href="https://github.com/guilhermehub12/structuring-reactjs-app">Clique Aqui</a></h4>
                 </header>
             </div>
         </section>
