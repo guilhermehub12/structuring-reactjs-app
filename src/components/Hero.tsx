@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react';
 import * as types from "../types"
 
 type Props = types.RCProps<{
@@ -5,16 +6,32 @@ type Props = types.RCProps<{
 }>;
 
 export const Hero = ({ library }: Props) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const togglePlay = () => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        if (isPlaying) {
+            video.pause();
+        } else {
+            video.play();
+        }
+        setIsPlaying(!isPlaying);
+    };
     return (
         <section className="hero">
-            <video className="hero-video" autoPlay={true} loop={true}
+            <video ref={videoRef} className="hero-video" autoPlay loop
             >
                 <source src="../assets/video.mp4" type="video/mp4" />
                 Your browser does not support the video element. Kindly update it to latest version or try another one.
             </video>
             <div className="hero-container">
                 <header>
-                    <h5 className="hero-label">QAutomatizado</h5>
+                    <h5 className="hero-label">QAutomatizado <button onClick={togglePlay}>
+                        {isPlaying ? 'Pause' : 'Play'}
+                    </button></h5>
                     <h2 className="hero-title">
                         Organizando/Configurando Projetos {library}
                     </h2>
